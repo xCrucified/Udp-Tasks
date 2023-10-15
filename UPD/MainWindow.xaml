@@ -5,8 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UPD"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="390" Width="600">
+    <StackPanel>
+        <Grid Height="40">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <DockPanel>
+                <Label Content="IP : " HorizontalAlignment="Left" FontSize="20"/>
+                <TextBox Name="IpBox" Margin="10" Width="200" HorizontalAlignment="Left"/>
+            </DockPanel>
+            <DockPanel Grid.Column="1">
+                <Label Content="Port : " HorizontalAlignment="Left" FontSize="20"/>
+                <TextBox Name="PortBox" Margin="10" Width="200" HorizontalAlignment="Left"/>
+            </DockPanel>
+        </Grid>
+        <ListView Height="300" Background="AliceBlue" Name="ChatList" ItemsSource="{Binding Path=messages}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <DockPanel>
+                            <Label Content="{Binding Path=message}" HorizontalAlignment="Left"/>
+                            <Label Content="{Binding Path=time}" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                        <Line Stroke="Black"  X2="400" StrokeThickness="4"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListView>
 
-    </Grid>
+        <DockPanel Height="30">
+            <TextBox Name="MessageBox" HorizontalAlignment="Left" Width="500" Margin="5"/>
+            <Button x:Name="SendBtn" Margin="5" Content="Send" Background="LimeGreen" Click="SendBtn_Click"/>
+        </DockPanel>
+
+    </StackPanel>
 </Window>
