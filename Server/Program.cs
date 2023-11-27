@@ -14,17 +14,13 @@ namespace Server
         };
 
 
-        static string address = "127.0.0.1"; // поточний адрес
-        static int port = 8080;              // порт для приема входящих запросов
+        static string address = "127.0.0.1";
+        static int port = 8080;             
 
         static void Main(string[] args)
         {
-            // получаем адреса для запуска сокета
             IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(address), port);
-
-            // об'єкт для отримання адреси відправника
             IPEndPoint remoteEndPoint = null;
-
             UdpClient listener = new UdpClient(ipPoint);
 
             try
